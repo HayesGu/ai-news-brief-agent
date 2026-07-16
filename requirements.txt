@@ -1,0 +1,16 @@
+# Runtime dependencies
+beautifulsoup4>=4.12.3
+feedparser>=6.0.11
+httpx>=0.28.1
+python-dotenv>=1.0.1
+PyYAML>=6.0.2
+requests>=2.32.3
+pydantic>=2.8.2
+pandas>=2.2.2
+numpy>=2.0.1
+networkx>=3.3
+rich>=13.7.1
+
+# Development and testing
+pytest>=8.3.2
+ruff>=0.5.5

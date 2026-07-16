@@ -1,0 +1,102 @@
+research_profile:
+  name: "Personal Computational Social Science Research Profile"
+  description: "Default preferences for a personal AI research intelligence workflow."
+
+topics:
+  primary:
+    - 计算社会科学
+    - Computational Social Science
+    - social network analysis
+    - political communication
+    - collective behavior
+    - digital trace data
+  secondary:
+    - AI-based computational social science methods
+    - LLM-based social simulation
+    - agent-based modeling
+    - multi-agent systems
+    - computational social modeling
+    - survey methodology
+    - misinformation
+    - platform governance
+    - public opinion
+
+source_preferences:
+  preferred_source_types:
+    - peer-reviewed articles
+    - working papers
+    - conference papers
+    - public datasets
+    - replication packages
+  excluded_source_types:
+    - unverified social media threads
+    - unsourced commentary
+
+analysis_preferences:
+  evidence_standard: "Prefer claims supported by transparent data, methods, and citations."
+  summarize_limitations: true
+  compare_methods: true
+  flag_reproducibility_risks: true
+  include_policy_implications: false
+
+output_preferences:
+  citation_style: "APA"
+  default_report_format: "markdown"
+  include_open_questions: true
+
+daily_digest:
+  max_detailed_articles: 5
+  max_short_articles: 2
+  minimum_detailed_score: 6
+  minimum_short_score: 3
+  max_enriched_text_chars: 12000
+  max_articles_to_score: 35
+
+pipeline:
+  mode: daily
+  bootstrap_days: 30
+
+freshness:
+  bootstrap_lookback_days: 3
+  normal_lookback_hours: 36
+  academic_lookback_days: 180
+  future_date_tolerance_hours: 6
+  allow_unknown_dates_in_daily: false
+  allow_low_confidence_dates_in_daily: false
+  material_update_minimum_age_hours: 12
+
+deduplication:
+  title_similarity_threshold: 0.88
+  same_source_similarity_threshold: 0.82
+
+research_keywords:
+  high_priority:
+    - 计算社会科学
+    - AI-based CSS methods
+    - LLM-based social simulation
+    - AI治理
+    - 算法公平
+    - 人机交互
+    - 社会模拟
+    - Agent-based model
+    - multi-agent systems
+    - computational social modeling
+    - AI经济学
+    - AI与劳动市场
+    - AI与不平等
+    - 数字社会
+  medium_priority:
+    - 大语言模型
+    - AI Agent
+    - 数字痕迹数据
+    - NLP for social science
+    - 网络分析
+    - 可解释人工智能
+    - AI安全
+    - 强化学习
+  low_priority:
+    - GPU
+    - 芯片
+    - 模型benchmark
+    - 工程优化
+    - 纯计量识别

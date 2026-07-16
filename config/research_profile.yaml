@@ -1,0 +1,31 @@
+academic_background:
+  - economics
+  - computational social science
+  - AI-based computational methods
+  - social simulation
+
+research_interests:
+  high_priority:
+    - computational social science
+    - social simulation
+    - AI-based CSS methods
+    - LLM-based social simulation
+    - agent-based modeling
+    - multi-agent systems
+    - computational social modeling
+    - AI governance
+    - algorithmic fairness
+    - human-AI interaction
+    - computational sociology
+  medium_priority:
+    - digital trace data
+    - NLP for social science
+    - network analysis
+    - labor economics
+    - education inequality
+    - digital society
+  low_priority:
+    - hardware
+    - pure model scaling
+    - benchmark-only papers
+    - purely econometric identification without computational modeling
