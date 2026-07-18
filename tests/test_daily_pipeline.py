@@ -25,14 +25,14 @@ from ai_research_agent.storage.article_registry import ArticleRegistry
 @dataclass
 class FakeClient:
     response: str = (
-        "# AI Research Briefing: 2026-07-14\n\n"
+        "# AI Research Three-Day Briefing: 2026-07-14\n\n"
         "## 1. AI Industry News Brief\n\n"
         "- English briefing generated."
     )
     model_name: str = "fake-model"
 
     def generate_markdown(self, prompt: str) -> str:
-        assert "AI Research Briefing" in prompt or "structured intermediate results" in prompt
+        assert "AI Research Three-Day Briefing" in prompt or "structured intermediate results" in prompt
         return self.response
 
 
@@ -149,8 +149,8 @@ def test_english_markdown_output(tmp_path: Path) -> None:
     result = pipeline.run(target_date=date(2026, 7, 14))
 
     text = result.report_path.read_text(encoding="utf-8") if result.report_path else ""
-    assert 'title: "AI Research Briefing: 2026-07-14"' in text
-    assert "# AI Research Briefing: 2026-07-14" not in text
+    assert 'title: "AI Research Three-Day Briefing: 2026-07-14"' in text
+    assert "# AI Research Three-Day Briefing: 2026-07-14" not in text
     assert text.count("## 1. AI Industry News Brief") == 1
     assert "English briefing generated" in text
 
@@ -219,9 +219,9 @@ def test_final_output_path_and_yaml_front_matter(tmp_path: Path) -> None:
     )
 
     text = path.read_text(encoding="utf-8")
-    assert path.name == "2026-07-14_AI_Research_Briefing.md"
+    assert path.name == "2026-07-14_AI_Research_Three_Day_Briefing.md"
     assert text.startswith("---")
-    assert 'title: "AI Research Briefing: 2026-07-14"' in text
+    assert 'title: "AI Research Three-Day Briefing: 2026-07-14"' in text
     assert 'date: "2026-07-14"' in text
     assert "article_count_collected: 1" in text
     assert "article_count_selected: 1" in text
@@ -383,5 +383,8 @@ def _analysis_prompt(tmp_path: Path) -> Path:
 
 def _digest_prompt(tmp_path: Path) -> Path:
     path = tmp_path / "daily_digest.md"
-    path.write_text("# AI Research Briefing\n\nGenerate an English briefing.", encoding="utf-8")
+    path.write_text(
+        "# AI Research Three-Day Briefing\n\nGenerate an English three-day briefing.",
+        encoding="utf-8",
+    )
     return path

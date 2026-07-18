@@ -27,15 +27,15 @@ These fields are not treated as ground truth. They are machine-generated annotat
 
 ## What It Does
 
-The daily pipeline performs the following steps:
+The periodic briefing pipeline performs the following steps:
 
 1. Collect official AI research updates from configured public sources.
 2. Normalize and deduplicate article URLs.
-3. Apply freshness filtering so old archive pages do not repeatedly enter the daily workflow.
+3. Apply freshness filtering so old archive pages do not repeatedly enter the workflow.
 4. Score each fresh article for relevance to a CSS-oriented research profile.
 5. Select a small set of high-value research items and a few general AI technical updates.
 6. Enrich selected article text when the official page is accessible.
-7. Generate an English daily research briefing in Markdown.
+7. Generate an English research briefing in Markdown.
 8. Optionally copy the final report into an Obsidian daily notes folder.
 
 ## Architecture
@@ -48,7 +48,7 @@ flowchart LR
   D --> E[LLM Relevance Scoring]
   E --> F[Article Selection]
   F --> G[Article Enrichment]
-  G --> H[English Daily Briefing]
+  G --> H[English Three-Day Briefing]
   H --> I[Markdown Output]
   I --> J[Optional Obsidian Sync]
 ```
@@ -90,7 +90,7 @@ This helps prevent:
 - repeated processing of the same article
 - accidental inclusion of historical archive pages
 - duplicate article variants caused by tracking parameters
-- repeated daily reports containing the same item
+- repeated periodic reports containing the same item
 
 The registry is local and ignored by Git.
 
@@ -151,10 +151,10 @@ Academic conference sources are not enabled by default because public proceeding
 
 ## Output
 
-The daily report is a UTF-8 Markdown file, for example:
+The report is a UTF-8 Markdown file, for example:
 
 ```text
-output/daily/2026-07-15_AI_Research_Briefing.md
+output/daily/2026-07-15_AI_Research_Three_Day_Briefing.md
 ```
 
 The report is designed for academic research note-taking and includes:
@@ -162,7 +162,6 @@ The report is designed for academic research note-taking and includes:
 - AI industry signals
 - key concepts
 - CSS-oriented research or technical detail
-- research variables and mechanisms
 - CSS research directions
 - information boundaries and verification notes
 
@@ -203,12 +202,14 @@ $env:PYTHONPATH='src'
 python -m ai_research_agent collect
 ```
 
-Run the full daily pipeline:
+Run the full briefing pipeline manually:
 
 ```powershell
 $env:PYTHONPATH='src'
 python -m ai_research_agent daily
 ```
+
+The command is named `daily` for backward compatibility with the original local workflow, but the default report is a three-day briefing.
 
 Run and sync to an Obsidian daily notes folder:
 
@@ -216,6 +217,8 @@ Run and sync to an Obsidian daily notes folder:
 $env:PYTHONPATH='src'
 python -m ai_research_agent daily --sync-daily-kb --daily-kb-path "D:\path\to\your\obsidian\vault\01 Daily"
 ```
+
+The default configuration uses a five-day freshness window. For sources that do not publish high-value research updates every day, the recommended schedule is to run the pipeline every three days.
 
 Preview cleanup of old generated artifacts:
 
@@ -267,7 +270,7 @@ The repository is designed so local runtime artifacts are ignored by Git:
 - `output/`
 - `.venv/`
 - SQLite registries
-- generated daily reports
+- generated three-day reports
 
 Before publishing a fork or project copy, scan for local paths and secrets:
 

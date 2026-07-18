@@ -42,10 +42,10 @@ def sync_daily_report_to_knowledge_base(
     report_path: Path,
     config: DailyKnowledgeBaseSyncConfig,
 ) -> Path:
-    """Copy a generated daily Markdown report into the daily knowledge base."""
+    """Copy a generated briefing Markdown report into the daily knowledge base."""
     source = report_path.resolve()
     if not source.exists() or not source.is_file():
-        raise ResearchAgentError(f"Daily report does not exist: {report_path}")
+        raise ResearchAgentError(f"Briefing report does not exist: {report_path}")
     if source.suffix.lower() != ".md":
         raise ResearchAgentError(
             f"Only Markdown reports can be synced to the daily knowledge base: {report_path}"

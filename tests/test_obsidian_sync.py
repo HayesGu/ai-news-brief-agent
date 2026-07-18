@@ -11,7 +11,7 @@ from ai_research_agent.reporting.obsidian import (
 
 
 def test_sync_daily_report_to_knowledge_base(tmp_path: Path) -> None:
-    report = tmp_path / "2026-07-14_AI_Research_Briefing.md"
+    report = tmp_path / "2026-07-14_AI_Research_Three_Day_Briefing.md"
     report.write_text("# Test briefing\n", encoding="utf-8")
     destination_dir = tmp_path / "daily_notes"
 

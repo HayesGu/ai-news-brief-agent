@@ -1,4 +1,4 @@
-"""Run state and manifest persistence for daily workflows."""
+"""Run state and manifest persistence for briefing workflows."""
 
 from __future__ import annotations
 

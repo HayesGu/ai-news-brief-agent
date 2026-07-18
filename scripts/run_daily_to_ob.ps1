@@ -21,8 +21,8 @@ if (-not (Test-Path -LiteralPath ".env")) {
 
 New-Item -ItemType Directory -Path $LogDir -Force | Out-Null
 $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
-$logPath = Join-Path $LogDir "daily_to_ob_$timestamp.log"
-$errorLogPath = Join-Path $LogDir "daily_to_ob_$timestamp.err.log"
+$logPath = Join-Path $LogDir "three_day_to_ob_$timestamp.log"
+$errorLogPath = Join-Path $LogDir "three_day_to_ob_$timestamp.err.log"
 
 $env:PYTHONPATH = "src"
 
@@ -45,7 +45,7 @@ $process = Start-Process `
     -RedirectStandardError $errorLogPath
 
 if ($process.ExitCode -ne 0) {
-    throw "Daily AI research briefing failed. See logs: $logPath and $errorLogPath"
+    throw "Three-day AI research briefing failed. See logs: $logPath and $errorLogPath"
 }
 
-Write-Output "Daily AI research briefing completed. Logs: $logPath and $errorLogPath"
+Write-Output "Three-day AI research briefing completed. Logs: $logPath and $errorLogPath"

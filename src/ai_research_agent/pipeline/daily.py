@@ -183,7 +183,7 @@ class ArticleAnalysisRecord:
 
 @dataclass(frozen=True)
 class DailyRunResult:
-    """Artifacts produced by one daily pipeline run."""
+    """Artifacts produced by one briefing pipeline run."""
 
     target_date: date
     collected_articles: list[CollectedArticle]
@@ -250,7 +250,7 @@ class DailyPipeline:
         dry_run: bool = False,
         explain_filtering: bool = False,
     ) -> DailyRunResult:
-        """Run the daily workflow."""
+        """Run the three-day briefing workflow."""
         run_date = target_date or datetime.now(UTC).date()
         profile = load_research_profile(self.profile_path)
         config = load_daily_digest_config(profile, max_detailed=max_detailed)
@@ -504,7 +504,7 @@ def run_daily_pipeline(
     dry_run: bool = False,
     explain_filtering: bool = False,
 ) -> DailyRunResult:
-    """Convenience wrapper for the default daily pipeline."""
+    """Convenience wrapper for the default briefing pipeline."""
     return DailyPipeline(client=client).run(
         target_date=target_date,
         max_detailed=max_detailed,
@@ -690,7 +690,7 @@ def _fetch_article_text(url: str, timeout_seconds: int) -> str:
     response = requests.get(
         url,
         timeout=timeout_seconds,
-        headers={"User-Agent": "AIResearchAgent/0.1 daily briefing enricher"},
+        headers={"User-Agent": "AIResearchAgent/0.1 three-day briefing enricher"},
     )
     response.raise_for_status()
     soup = BeautifulSoup(response.text, "html.parser")

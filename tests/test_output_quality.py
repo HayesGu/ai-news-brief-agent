@@ -74,7 +74,7 @@ def test_daily_digest_prompt_contains_obsidian_schema_and_research_fields() -> N
         failures=[],
     )
 
-    assert "obsidian_daily_research_briefing" in prompt
+    assert "obsidian_three_day_research_briefing" in prompt
     assert "research_question" in prompt
     assert "connection_to_user_research_interests" in prompt
     assert "report_quality_score" in prompt
@@ -98,7 +98,7 @@ def test_daily_front_matter_contains_quality_score_schema() -> None:
     )
 
     assert 'schema_version: "0.1"' in content
-    assert 'document_type: "ai_research_daily_briefing"' in content
+    assert 'document_type: "ai_research_three_day_briefing"' in content
     assert "quality_score:" in content
     assert "overall: 8" in content
 

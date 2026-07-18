@@ -46,7 +46,7 @@ output_preferences:
 
 daily_digest:
   max_detailed_articles: 5
-  max_short_articles: 2
+  max_short_articles: 4
   minimum_detailed_score: 6
   minimum_short_score: 3
   max_enriched_text_chars: 12000
@@ -58,7 +58,7 @@ pipeline:
 
 freshness:
   bootstrap_lookback_days: 3
-  normal_lookback_hours: 36
+  normal_lookback_hours: 120
   academic_lookback_days: 180
   future_date_tolerance_hours: 6
   allow_unknown_dates_in_daily: false

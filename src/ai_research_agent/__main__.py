@@ -67,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     daily_parser = subparsers.add_parser(
         "daily",
-        help="Run the end-to-end daily AI research briefing workflow.",
+        help="Run the end-to-end three-day AI research briefing workflow.",
     )
     daily_parser.add_argument(
         "--date",
@@ -94,7 +94,7 @@ def build_parser() -> argparse.ArgumentParser:
     daily_parser.add_argument(
         "--sync-daily-kb",
         action="store_true",
-        help="Copy the generated daily report to the configured daily knowledge base.",
+        help="Copy the generated three-day report to the configured daily knowledge base.",
     )
     daily_parser.add_argument(
         "--daily-kb-path",
@@ -197,7 +197,7 @@ def main(argv: list[str] | None = None) -> int:
                     f"selected {len(result.selected_articles.all_selected)}."
                 )
             else:
-                print(f"Daily report saved: {result.report_path}")
+                print(f"Three-day report saved: {result.report_path}")
                 kb_config = load_daily_kb_config_from_env(
                     daily_kb_path=args.daily_kb_path,
                     sync_enabled=True if args.sync_daily_kb else None,
